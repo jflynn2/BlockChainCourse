@@ -7,6 +7,7 @@ public class TxHandler {
      */
     public TxHandler(UTXOPool utxoPool) {
         // IMPLEMENT THIS
+        return UTXOPool( utxoPool );
     }
 
     /**
@@ -20,6 +21,16 @@ public class TxHandler {
      */
     public boolean isValidTx(Transaction tx) {
         // IMPLEMENT THIS
+        private boolean isValid = True;
+        for (UTXO input : tx.getInputs()) {
+            if !(input in pool){
+                isValid = False;
+            }
+            else if !(Crypto.verifySignature(tx)) {
+                isValid = False;
+            }
+            else if
+        }
     }
 
     /**
@@ -29,6 +40,14 @@ public class TxHandler {
      */
     public Transaction[] handleTxs(Transaction[] possibleTxs) {
         // IMPLEMENT THIS
-    }
+        testPool = new TxHandler(possibleTxs);
+        validTrans = Transaction[];
 
+        for (Transaction trans : pool) {
+            if (isValidTx(trans)) {
+                validTrans[trans.Input.index] = trans;
+            }
+        }
+        return validTrans;
+    }
 }
